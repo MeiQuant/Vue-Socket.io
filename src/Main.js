@@ -5,28 +5,27 @@ export default {
 
     install(Vue){
 
-        Vue.prototype.$socket = function (uri, opts) {
-            const observer = new Observer(uri, opts)
-            return observer.Socket
-        }
+        let _pool = new Map()
 
-        Vue.prototype.$socketPool = new Map()
+        Vue.prototype.$socket = function (uri, opts) {
+
+            let socket
+
+            if (!_pool.has(uri)) {
+                socket = (new Observer(uri, opts)).Socket
+                _pool.set(uri, socket)
+            } else {
+                socket = _pool.get(uri)
+            }
+
+            return socket
+        }
 
 
         Vue.mixin({
-            beforeCreate(){
+            beforeCreate () {
                 let _this = this;
                 let sockets = this.$options['sockets']
-                let uri = this.$options['uri']
-                let opts = this.$options['socketsOpts']
-                let socket
-
-                if (!this.$socketPool.has(uri)) {
-                    socket = this.$socket(uri, opts)
-                    this.$socketPool.set(uri, socket)
-                } else {
-                    socket = this.$socketPool.get(uri)
-                }
 
                 if(sockets){
                     Object.keys(sockets).forEach(function(key) {
@@ -34,7 +33,7 @@ export default {
                     });
                 }
             },
-            beforeDestroy(){
+            beforeDestroy () {
                 let _this = this;
                 let sockets = this.$options['sockets']
 

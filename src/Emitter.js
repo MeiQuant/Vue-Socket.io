@@ -45,4 +45,8 @@ export default new class {
         }
         return false;
     }
+
+    getListeners() {
+        return this.listeners
+    }
 }
