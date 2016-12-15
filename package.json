@@ -1,6 +1,6 @@
 {
   "name": "vue-socket.io-meiquant",
-  "version": "2.0.1",
+  "version": "0.0.1",
   "description": "socket.io implemantation for vuejs based vue-socket.io",
   "main": "dist/build.js",
   "scripts": {
@@ -33,6 +33,6 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "cross-env": "^2.0.0",
-    "webpack": "^1.13.2"
+    "webpack": "^2.1.0-beta.27"
   }
 }
