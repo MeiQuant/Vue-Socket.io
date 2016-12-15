@@ -3,15 +3,10 @@ import Socket from 'socket.io-client'
 
 export default class{
 
-    constructor(connection, nsp, opts) {
+    constructor(uri, opts) {
 
-        if(typeof connection == 'string'){
-            this.Socket = Socket(connection, nsp, opts);
-        }else{
-            this.Socket = connection
-        }
-
-        this.onEvent()
+        this.Socket = Socket(uri, opts)
+        this.Pool = new Map()
 
     }
 
