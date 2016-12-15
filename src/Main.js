@@ -10,6 +10,9 @@ export default {
             return observer.Socket
         }
 
+        Vue.prototype.$socketPool = new Map()
+
+
         Vue.mixin({
             beforeCreate(){
                 let _this = this;
@@ -18,11 +21,11 @@ export default {
                 let opts = this.$options['socketsOpts']
                 let socket
 
-                if (!this.$socket.Pool.has(uri)) {
-                    socket = this.$socket.Socket(uri, opts)
-                    this.$socket.Pool.set(uri, socket)
+                if (!this.$socketPool.has(uri)) {
+                    socket = this.$socket(uri, opts)
+                    this.$socketPool.set(uri, socket)
                 } else {
-                    socket = this.$socket.Pool.get(uri)
+                    socket = this.$socketPool.get(uri)
                 }
 
                 if(sockets){

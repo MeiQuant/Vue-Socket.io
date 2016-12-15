@@ -6,7 +6,6 @@ export default class{
     constructor(uri, opts) {
 
         this.Socket = Socket(uri, opts)
-        this.Pool = new Map()
 
     }
 
