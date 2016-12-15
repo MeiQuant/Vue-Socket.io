@@ -1,14 +1,14 @@
 {
-  "name": "vue-socket.io",
+  "name": "vue-socket.io-meiquant",
   "version": "2.0.1",
-  "description": "socket.io implemantation for vuejs",
+  "description": "socket.io implemantation for vuejs based vue-socket.io",
   "main": "dist/build.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MetinSeylan/Vue-Socket.io.git"
+    "url": "git+https://github.com/MeiQuant/Vue-Socket.io.git"
   },
   "keywords": [
     "vuejs",
@@ -16,14 +16,14 @@
     "vue",
     "socket",
     "socket.io",
-	"comolokko"
+	  "comolokko"
   ],
   "author": "Metin Seylan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/MetinSeylan/Vue-Socket.io/issues"
+    "url": "https://github.com/MeiQuant/Vue-Socket.io/issues"
   },
-  "homepage": "https://github.com/MetinSeylan/Vue-Socket.io#readme",
+  "homepage": "https://github.com/MeiQuant/Vue-Socket.io#readme",
   "dependencies": {
     "socket.io-client": "^1.4.6"
   },

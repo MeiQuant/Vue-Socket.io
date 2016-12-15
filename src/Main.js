@@ -15,13 +15,19 @@ export default {
             beforeCreate(){
                 let _this = this;
                 let sockets = this.$options['sockets']
+                let uri = this.$options['uri']
+                let nsp = this.$options['socketsNsp']
+                let opts = this.$options['socketsOpts']
+
+                if (uri || nsp) {
+                  _this.$socket = new Observer(uri, nsp, opts)
+                }
 
                 if(sockets){
                     Object.keys(sockets).forEach(function(key) {
                         Emitter.addListener(key, sockets[key], _this)
                     });
                 }
-
             },
             beforeDestroy(){
                 let _this = this;

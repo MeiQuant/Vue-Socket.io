@@ -3,10 +3,10 @@ import Socket from 'socket.io-client'
 
 export default class{
 
-    constructor(connection) {
+    constructor(connection, nsp, opts) {
 
         if(typeof connection == 'string'){
-            this.Socket = Socket(connection);
+            this.Socket = Socket(connection, nsp, opts);
         }else{
             this.Socket = connection
         }
