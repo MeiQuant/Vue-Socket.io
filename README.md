@@ -1,32 +1,25 @@
-# Vue-Socket.io
-socket.io implemantation for Vuejs 2.0 and 1.0
+# Vue-Socket.io-MeiQuant
+socket.io implemantation for Vuejs 2.0 based on Vue-Socoket.io
 
 ## Install
 
+  add this line to your package.josn's dependencies
   ``` bash
-  npm install vue-socket.io --save
+  "vue-socket.io-meiquant": "github:MeiQuant/Vue-Socket.io"
   ```
-  for Vue 1.0
 
   ``` bash
-  npm install vue-socket.io@1.0.2 --save
+  npm install vue-socket.io-meiquant
   ```
 
 ## Usage
 
 ``` js
 import Vue from 'vue';
-import VueSocketio from 'vue-socket.io';
+import Socket from 'vue-socket.io-meiquant';
 
-Vue.use(VueSocketio, 'http://socketserver.com:1923'); // Automaticly socket connect from url string
+Vue.use(Socket); // Automaticly socket connect from url string
 
-/*
-  import socketio from 'socket.io-client';
-
-  var ioInstance = socketio('http://socketserver.com:1923');
-
-  Vue.use(VueSocketio, ioInstance); // bind custom socketio instance
-*/
 
 var vm = new Vue({
   sockets:{
@@ -37,19 +30,23 @@ var vm = new Vue({
       console.log('this method fired by socket server. eg: io.emit("customEmit", data)')
     }
   },
+
+  created () {
+
+    this.socket = this.$socekt('http://example.com:5000/namespace')
+
+  },
+
   methods: {
     clickButton: function(val){
         // $socket is socket.io-client instance
-        this.$socket.emit('emit_method', val);
+        this.socket.emit('emit_method', val);
     }
   }
 })
 ```
 
-## Example
-[Realtime Car Tracker System](http://metinseylan.com/)
 
-[Simple Chat App](http://metinseylan.com/vuesocketio/)
 
 ## License
 [WTFPL](http://www.wtfpl.net/)
