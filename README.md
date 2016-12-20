@@ -8,6 +8,8 @@ socket.io implemantation for Vuejs 2.0 based on Vue-Socoket.io
   "vue-socket.io-meiquant": "github:MeiQuant/Vue-Socket.io"
   ```
 
+    then run npm install
+
   ``` bash
   npm install vue-socket.io-meiquant
   ```
@@ -18,7 +20,7 @@ socket.io implemantation for Vuejs 2.0 based on Vue-Socoket.io
 import Vue from 'vue';
 import Socket from 'vue-socket.io-meiquant';
 
-Vue.use(Socket); // Automaticly socket connect from url string
+Vue.use(Socket);
 
 
 var vm = new Vue({
@@ -33,7 +35,7 @@ var vm = new Vue({
 
   created () {
 
-    this.socket = this.$socekt('http://example.com:5000/namespace')
+    this.socket = this.$socekt('http://example.com:5000/namespace') // Automaticly socket connect from url string
 
   },
 
